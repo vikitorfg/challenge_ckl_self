@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { fetchArticles } from "../actions";
 
 class ArticlesList extends Component {
+  componentDidMount() {
+    this.props.fetchPosts();
+  }
+
   render() {
     console.log(this.props);
 
@@ -13,4 +18,7 @@ const mapStateToProps = state => {
   return { props: state };
 };
 
-export default connect(mapStateToProps)(ArticlesList);
+export default connect(
+  mapStateToProps,
+  { fetchArticles }
+)(ArticlesList);
