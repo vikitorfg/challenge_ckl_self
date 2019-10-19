@@ -8,31 +8,10 @@ export class Navbar extends Component {
     return (
       <header className="navbar">
         <nav className="navbar-nav">
-          <img
-            className="navbar-menu"
-            src={menu}
-            onClick={this.props.toogleMenuClickHandler}
-            alt=""
-          />
-          <img
-            className="navbar-logo"
-            src={logo}
-            alt="logo"
-            onClick={() => this.props.handleSubjectChange()}
-          />
+          <img className="navbar-menu" src={menu} alt="menu" />
+          <img className="navbar-logo" src={logo} alt="logo" />
           <div className="navbar-items">
             <ul>
-              {this.props.subjectList.map(subject => {
-                return (
-                  <li key={subject}>
-                    <span
-                      onClick={() => this.props.handleSubjectChange(subject)}
-                    >
-                      {subject}
-                    </span>
-                  </li>
-                );
-              })}
               <li>
                 <div className="navbar-login">LOGIN</div>
               </li>
