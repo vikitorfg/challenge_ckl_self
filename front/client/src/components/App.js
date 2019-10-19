@@ -1,6 +1,7 @@
 import React from "react";
 import ArticlesList from "./ArticlesList";
 import Navbar from "./Navbar/Navbar";
+import "./App.css";
 
 const App = () => {
   return (
@@ -8,7 +9,7 @@ const App = () => {
       <div className="navbar">
         <Navbar />
       </div>
-      <div>
+      <div className="body">
         <ArticlesList />
       </div>
     </div>

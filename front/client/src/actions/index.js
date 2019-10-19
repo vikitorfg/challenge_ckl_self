@@ -9,7 +9,12 @@ export const fetchArticles = subject => async dispatch => {
 
   const response = await backend.get(article);
 
-  console.log(response);
-
   dispatch({ type: "FETCH_ARTICLES", payload: response.data.results });
+};
+
+export const fetchSubjects = () => async dispatch => {
+  const response = await backend.get("subjects/");
+  console.log(response.data);
+
+  dispatch({ type: "FETCH_SUBJECTS", payload: response.data });
 };
