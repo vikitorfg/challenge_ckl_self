@@ -4,7 +4,7 @@ import { fetchArticles } from "../actions";
 
 class ArticlesList extends Component {
   componentDidMount() {
-    this.props.fetchPosts();
+    this.props.fetchArticles();
   }
 
   render() {
@@ -15,7 +15,7 @@ class ArticlesList extends Component {
 }
 
 const mapStateToProps = state => {
-  return { props: state };
+  return { articles: state.articlesReducer };
 };
 
 export default connect(
