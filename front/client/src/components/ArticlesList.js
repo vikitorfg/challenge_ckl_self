@@ -10,7 +10,15 @@ class ArticlesList extends Component {
   render() {
     console.log(this.props);
 
-    return <div>ArticleList</div>;
+    return (
+      <div>
+        <div>
+          <button onClick={() => this.props.fetchArticles("BUSINESS")}>
+            fetchArticle
+          </button>
+        </div>
+      </div>
+    );
   }
 }
 
