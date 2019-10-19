@@ -1,17 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 import "./ToogleMenu.css";
+import { connect } from "react-redux";
+import { fetchArticles } from "../../../actions";
+import { fetchSubjects } from "../../../actions";
+import { switchToogleMenu } from "../../../actions";
 
-export class ToogleMenu extends Component {
-  render() {
+const ToogleMenu = props => {
+  const filterAndClose = subject => {
+    props.fetchArticles(subject);
+    props.switchToogleMenu();
+  };
+
+  if (props.toogleMenuStatus) {
     return (
       <div>
         <div className="tooglemenu-items">
           <ul>
-            {this.props.subjectList.map(subject => {
+            {props.subjects.map(subject => {
               return (
-                <li key={subject}>
-                  <span onClick={() => this.props.handleSubjectChange(subject)}>
-                    {subject}
+                <li key={subject.name}>
+                  <span onClick={() => filterAndClose(subject.name)}>
+                    {subject.name}
                   </span>
                 </li>
               );
@@ -23,7 +32,19 @@ export class ToogleMenu extends Component {
         </div>
       </div>
     );
+  } else {
+    return <div></div>;
   }
-}
+};
 
-export default ToogleMenu;
+const mapStateToProps = state => {
+  return {
+    subjects: state.subjectsReducer,
+    toogleMenuStatus: state.switchToogleMenuReducer
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchSubjects, fetchArticles, switchToogleMenu }
+)(ToogleMenu);

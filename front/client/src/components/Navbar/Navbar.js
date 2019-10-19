@@ -5,6 +5,7 @@ import menu from "../../static/menu.png";
 import { connect } from "react-redux";
 import { fetchArticles } from "../../actions";
 import { fetchSubjects } from "../../actions";
+import { switchToogleMenu } from "../../actions";
 
 export class Navbar extends Component {
   componentDidMount() {
@@ -14,7 +15,12 @@ export class Navbar extends Component {
     return (
       <header className="navbar">
         <nav className="navbar-nav">
-          <img className="navbar-menu" src={menu} alt="menu" />
+          <img
+            className="navbar-menu"
+            src={menu}
+            alt="menu"
+            onClick={() => this.props.switchToogleMenu()}
+          />
           <img
             className="navbar-logo"
             src={logo}
@@ -53,5 +59,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchSubjects, fetchArticles }
+  { fetchSubjects, fetchArticles, switchToogleMenu }
 )(Navbar);
