@@ -17,3 +17,9 @@ export const fetchSubjects = () => async dispatch => {
 
   dispatch({ type: "FETCH_SUBJECTS", payload: response.data });
 };
+
+export const switchToogleMenu = () => {
+  return {
+    type: "SWITCH_TOOGLE_MENU"
+  };
+};
