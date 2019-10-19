@@ -4,18 +4,26 @@ import { fetchArticles } from "../actions";
 
 class ArticlesList extends Component {
   componentDidMount() {
-    this.props.fetchPosts();
+    this.props.fetchArticles();
   }
 
   render() {
     console.log(this.props);
 
-    return <div>ArticleList</div>;
+    return (
+      <div>
+        <div>
+          <button onClick={() => this.props.fetchArticles("BUSINESS")}>
+            fetchArticle
+          </button>
+        </div>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => {
-  return { props: state };
+  return { articles: state.articlesReducer };
 };
 
 export default connect(
