@@ -11,11 +11,17 @@ export class Navbar extends Component {
     this.props.fetchSubjects();
   }
   render() {
+    console.log(this.props.articles);
     return (
       <header className="navbar">
         <nav className="navbar-nav">
           <img className="navbar-menu" src={menu} alt="menu" />
-          <img className="navbar-logo" src={logo} alt="logo" />
+          <img
+            className="navbar-logo"
+            src={logo}
+            alt="logo"
+            onClick={() => this.props.fetchArticles()}
+          />
           <div className="navbar-items">
             <ul>
               {this.props.subjects.map(subject => {
@@ -43,7 +49,7 @@ export class Navbar extends Component {
 }
 
 const mapStateToProps = state => {
-  return { subjects: state.subjectsReducer };
+  return { subjects: state.subjectsReducer, articles: state.articlesReducer };
 };
 
 export default connect(
