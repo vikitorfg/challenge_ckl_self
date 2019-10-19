@@ -11,7 +11,6 @@ export class Navbar extends Component {
     this.props.fetchSubjects();
   }
   render() {
-    console.log(this.props.articles);
     return (
       <header className="navbar">
         <nav className="navbar-nav">
