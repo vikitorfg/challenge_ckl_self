@@ -1,16 +1,19 @@
 import React from "react";
 import "./ToogleMenu.css";
+import { connect } from "react-redux";
+import { fetchArticles } from "../../../actions";
+import { fetchSubjects } from "../../../actions";
 
-const ToogleMenu = () => {
+const ToogleMenu = props => {
   return (
     <div>
       <div className="tooglemenu-items">
         <ul>
-          {this.props.subjectList.map(subject => {
+          {props.subjects.map(subject => {
             return (
-              <li key={subject}>
-                <span onClick={() => this.props.handleSubjectChange(subject)}>
-                  {subject}
+              <li key={subject.name}>
+                <span onClick={() => props.fetchArticles(subject.name)}>
+                  {subject.name}
                 </span>
               </li>
             );
@@ -24,4 +27,11 @@ const ToogleMenu = () => {
   );
 };
 
-export default ToogleMenu;
+const mapStateToProps = state => {
+  return { subjects: state.subjectsReducer, articles: state.articlesReducer };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchSubjects, fetchArticles }
+)(ToogleMenu);
