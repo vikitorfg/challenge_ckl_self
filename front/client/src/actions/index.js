@@ -14,7 +14,6 @@ export const fetchArticles = subject => async dispatch => {
 
 export const fetchSubjects = () => async dispatch => {
   const response = await backend.get("subjects/");
-  console.log(response.data);
 
   dispatch({ type: "FETCH_SUBJECTS", payload: response.data });
 };

@@ -3,7 +3,7 @@ import "./Navbar.css";
 import logo from "../../static/logo.png";
 import menu from "../../static/menu.png";
 import { connect } from "react-redux";
-// import { fetchArticles } from "../../actions";
+import { fetchArticles } from "../../actions";
 import { fetchSubjects } from "../../actions";
 
 export class Navbar extends Component {
@@ -11,18 +11,26 @@ export class Navbar extends Component {
     this.props.fetchSubjects();
   }
   render() {
-    console.log(this.props.subjects.subjectsReducer);
     return (
       <header className="navbar">
         <nav className="navbar-nav">
           <img className="navbar-menu" src={menu} alt="menu" />
-          <img className="navbar-logo" src={logo} alt="logo" />
+          <img
+            className="navbar-logo"
+            src={logo}
+            alt="logo"
+            onClick={() => this.props.fetchArticles()}
+          />
           <div className="navbar-items">
             <ul>
-              {this.props.subjects.subjectsReducer.map(subject => {
+              {this.props.subjects.map(subject => {
                 return (
                   <li key={subject.name}>
-                    <span>{subject.name}</span>
+                    <span
+                      onClick={() => this.props.fetchArticles(subject.name)}
+                    >
+                      {subject.name}
+                    </span>
                   </li>
                 );
               })}
@@ -40,10 +48,10 @@ export class Navbar extends Component {
 }
 
 const mapStateToProps = state => {
-  return { subjects: state };
+  return { subjects: state.subjectsReducer, articles: state.articlesReducer };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchSubjects }
+  { fetchSubjects, fetchArticles }
 )(Navbar);
