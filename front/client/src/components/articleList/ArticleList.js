@@ -1,10 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import { fetchArticles } from "../../actions";
+
+import "./ArticleList.css";
+import Loader from "../Loader/Loader";
 import Cards from "../cards/Cards";
 
-const ArticleList = ({ articles }) => {
-  const headline = articles[0];
-  const featured = articles.slice(1, 3);
-  const defaults = articles.slice(3, 6);
+const ArticleList = props => {
+  if (!props.articles[0]) {
+    return <Loader />;
+  }
+
+  const headline = props.articles[0];
+  const featured = props.articles.slice(1, 3);
+  const defaults = props.articles.slice(3, 6);
 
   return (
     <div className="body">
@@ -25,4 +34,11 @@ const ArticleList = ({ articles }) => {
   );
 };
 
-export default ArticleList;
+const mapStateToProps = state => {
+  return { articles: state.articlesReducer };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchArticles }
+)(ArticleList);

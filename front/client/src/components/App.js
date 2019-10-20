@@ -1,5 +1,5 @@
 import React from "react";
-import ArticlesList from "./articleList/ArticlesList";
+import ArticlesList from "./articleList/ArticleList";
 import Navbar from "./Navbar/Navbar";
 import ToogleMenu from "./Navbar/ToogleMenu/ToogleMenu";
 import "./App.css";
@@ -11,7 +11,7 @@ const App = () => {
         <Navbar />
         <ToogleMenu />
       </div>
-      <div className="body">
+      <div>
         <ArticlesList />
       </div>
     </div>

@@ -10,6 +10,7 @@ import { switchToogleMenu } from "../../actions";
 export class Navbar extends Component {
   componentDidMount() {
     this.props.fetchSubjects();
+    this.props.fetchArticles();
   }
   render() {
     return (
