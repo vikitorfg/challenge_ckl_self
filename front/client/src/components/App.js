@@ -1,5 +1,5 @@
 import React from "react";
-import ArticlesList from "./ArticlesList";
+import ArticlesList from "./articleList/ArticlesList";
 import Navbar from "./Navbar/Navbar";
 import ToogleMenu from "./Navbar/ToogleMenu/ToogleMenu";
 import "./App.css";
