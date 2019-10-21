@@ -9,4 +9,9 @@
   .body {
     padding: 0 5% 0 5%;
   }
+
+  .featured {
+    display: flex;
+    justify-content: space-between;
+  }
 }
