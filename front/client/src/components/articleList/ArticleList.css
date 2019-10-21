@@ -21,3 +21,19 @@
     flex-wrap: wrap;
   }
 }
+
+@media (min-width: 1170px) {
+  .body {
+    padding: 0 9.5% 0 9.3%;
+  }
+
+  .front-page {
+    display: flex;
+    margin-top: 9.2857vw;
+    justify-content: space-between;
+  }
+
+  .featured {
+    width: 48.68%;
+  }
+}
