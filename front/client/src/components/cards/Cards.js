@@ -11,8 +11,7 @@ class Cards extends React.Component {
 
     const { author, hero_image, subject, text, title } = this.props.article;
     return (
-      // <div></div>
-      <div className={cardType + "-container"}>
+      <div className={cardType + "-container card"}>
         <div className="card-subject" style={{ color: subject.color }}>
           <span>{subject.name}</span>
         </div>
