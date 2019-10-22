@@ -47,7 +47,6 @@ export class Navbar extends Component {
               </li>
             </ul>
           </div>
-          <div className="spacer"></div>
         </nav>
       </header>
     );
