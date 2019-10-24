@@ -10,6 +10,10 @@ const ArticleList = props => {
   if (!props.articles[0]) {
     return <Loader />;
   }
+  if (props.match.params.selectedSubject) {
+    const selectedSubject = props.match.params.selectedSubject.toUpperCase();
+    props.fetchArticles(selectedSubject);
+  }
 
   const headline = props.articles[0];
   const featured = props.articles.slice(1, 3);
