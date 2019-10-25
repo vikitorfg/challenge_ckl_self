@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+
 import "./Navbar.css";
 import logo from "../../static/logo.png";
 import menu from "../../static/menu.png";
@@ -10,7 +12,6 @@ import { switchToogleMenu } from "../../actions";
 export class Navbar extends Component {
   componentDidMount() {
     this.props.fetchSubjects();
-    this.props.fetchArticles();
   }
   render() {
     return (
@@ -22,26 +23,25 @@ export class Navbar extends Component {
             alt="menu"
             onClick={() => this.props.switchToogleMenu()}
           />
-          <img
-            className="navbar-logo"
-            src={logo}
-            alt="logo"
-            onClick={() => this.props.fetchArticles()}
-          />
+          <Link to="/">
+            <img className="navbar-logo" src={logo} alt="logo" />
+          </Link>
+
           <div className="navbar-items">
             <ul>
               {this.props.subjects.map(subject => {
                 return (
-                  <li key={subject.name}>
-                    <span
-                      onClick={() => this.props.fetchArticles(subject.name)}
-                    >
-                      {subject.name}
-                    </span>
-                  </li>
+                  <Link to={`/subject/${subject.name}`} key={subject.name}>
+                    <li>
+                      <span
+                        onClick={() => this.props.fetchArticles(subject.name)}
+                      >
+                        {subject.name}
+                      </span>
+                    </li>
+                  </Link>
                 );
               })}
-
               <li>
                 <div className="navbar-login">LOGIN</div>
               </li>
@@ -57,7 +57,9 @@ const mapStateToProps = state => {
   return { subjects: state.subjectsReducer, articles: state.articlesReducer };
 };
 
-export default connect(
-  mapStateToProps,
-  { fetchSubjects, fetchArticles, switchToogleMenu }
-)(Navbar);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { fetchSubjects, fetchArticles, switchToogleMenu }
+  )(Navbar)
+);

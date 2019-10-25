@@ -14,15 +14,24 @@ const App = () => {
           <Navbar />
           <ToogleMenu />
         </div>
-        <BrowserRouter>
-          <div>
-            <Route path="/" exact component={ArticlesList} />
-            <Route path="/subject/:selectedSubject" component={ArticlesList} />
-          </div>
-        </BrowserRouter>
+        <div>
+          <Route path="/" exact component={ArticlesList} />
+          <Route path="/subject/:selectedSubject" component={ArticlesList} />
+        </div>
       </div>
     </BrowserRouter>
   );
 };
 
 export default App;
+
+// const mapStateToProps = state => {
+//   return { articles: state.articlesReducer };
+// };
+
+// export default withRouter(
+//   connect(
+//     mapStateToProps,
+//     { fetchArticles }
+//   )(App)
+// );
