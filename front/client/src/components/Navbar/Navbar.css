@@ -26,6 +26,7 @@
   height: 45px;
   position: absolute;
   left: 50%;
+  top: 6px;
   margin-left: -22.5px;
   /* margin: 5px 0 5px 0; */
 }
@@ -80,7 +81,7 @@
   }
 
   .navbar-logo {
-    margin: 0;
+    /* margin: 0; */
     cursor: pointer;
   }
 }
@@ -106,6 +107,8 @@
     z-index: 3;
     position: relative;
     margin-left: 0;
+    margin-bottom: 6px;
+    /* top 0; */
     left: 0;
   }
 
