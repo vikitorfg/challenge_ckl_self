@@ -1,10 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+import { onAuthChange } from "../../actions";
 
 class GoogleAuth extends React.Component {
   state = { isSignedIn: null };
 
   componentDidMount() {
-    // Google API Oauth documentation (harder to find then you'd think)
+    // Google API Oauth documentation (harder to find then you'd think) https://developers.google.com/identity/protocols/OAuth2UserAgent
     window.gapi.load("client:auth2", () => {
       window.gapi.client
         .init({
@@ -57,4 +59,11 @@ class GoogleAuth extends React.Component {
   }
 }
 
-export default GoogleAuth;
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(
+  mapStateToProps,
+  { onAuthChange }
+)(GoogleAuth);
