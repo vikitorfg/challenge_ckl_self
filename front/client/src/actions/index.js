@@ -23,3 +23,7 @@ export const switchToogleMenu = () => {
     type: "SWITCH_TOOGLE_MENU"
   };
 };
+
+export const onAuthChange = isSignedIn => {
+  return isSignedIn ? { type: "SIGN_IN" } : { type: "SIGN_OUT" };
+};
