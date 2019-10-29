@@ -24,6 +24,14 @@ export const switchToogleMenu = () => {
   };
 };
 
-export const onAuthChange = isSignedIn => {
-  return isSignedIn ? { type: "SIGN_IN" } : { type: "SIGN_OUT" };
+// export const onAuthChange = isSignedIn => {
+//   return isSignedIn ? { type: "SIGN_IN" } : { type: "SIGN_OUT" };
+// };
+
+export const signIn = () => {
+  return { type: "SIGN_IN" };
+};
+
+export const signOut = () => {
+  return { type: "SIGN_OUT" };
 };
