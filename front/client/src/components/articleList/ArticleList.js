@@ -17,7 +17,11 @@ class ArticleList extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
+    console.log(
+      this.props.match.url !== nextProps.match.url ||
+        this.props.articles !== nextProps.articles
+    );
     return (
       this.props.match.url !== nextProps.match.url ||
       this.props.articles !== nextProps.articles
@@ -25,8 +29,7 @@ class ArticleList extends Component {
   }
 
   render() {
-    console.log(this.props);
-
+    console.log("I was called");
     if (!this.props.articles[0]) {
       return <Loader />;
     }
