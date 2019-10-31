@@ -8,8 +8,7 @@ import { fetchSubjects } from "../../../actions";
 import { switchToogleMenu } from "../../../actions";
 
 const ToogleMenu = props => {
-  const filterAndClose = subject => {
-    props.fetchArticles(subject);
+  const close = () => {
     props.switchToogleMenu();
   };
 
@@ -22,9 +21,7 @@ const ToogleMenu = props => {
               return (
                 <Link to={`/subject/${subject.name}`} key={subject.name}>
                   <li>
-                    <span onClick={() => filterAndClose(subject.name)}>
-                      {subject.name}
-                    </span>
+                    <span onClick={() => close()}>{subject.name}</span>
                   </li>
                 </Link>
               );
