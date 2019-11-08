@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import ArticlesList from "./articleList/ArticleList";
 import Navbar from "./Navbar/Navbar";
-import ToogleMenu from "./Navbar/ToogleMenu/ToogleMenu";
+import ToogleMenu from "./ToogleMenu/ToogleMenu";
 import Login from "./Login/Login";
 import "./App.css";
 

@@ -3,9 +3,9 @@ import { Link, withRouter } from "react-router-dom";
 
 import "./ToogleMenu.css";
 import { connect } from "react-redux";
-import { fetchArticles } from "../../../actions";
-import { fetchSubjects } from "../../../actions";
-import { switchToogleMenu } from "../../../actions";
+import { fetchArticles } from "../../actions";
+import { fetchSubjects } from "../../actions";
+import { switchToogleMenu } from "../../actions";
 
 const ToogleMenu = props => {
   const close = () => {
@@ -27,7 +27,11 @@ const ToogleMenu = props => {
               );
             })}
             <li>
-              <div className="tooglemenu-login">LOGIN</div>
+              <Link to="/login">
+                <div className="tooglemenu-login" onClick={() => close()}>
+                  LOGIN
+                </div>
+              </Link>
             </li>
           </ul>
         </div>

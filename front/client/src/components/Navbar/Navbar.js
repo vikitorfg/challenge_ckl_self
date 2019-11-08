@@ -39,7 +39,9 @@ export class Navbar extends Component {
                 );
               })}
               <li>
-                <div className="navbar-login">LOGIN</div>
+                <Link to="/login">
+                  <div className="navbar-login">LOGIN</div>
+                </Link>
               </li>
             </ul>
           </div>
