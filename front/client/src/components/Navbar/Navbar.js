@@ -33,17 +33,15 @@ export class Navbar extends Component {
                 return (
                   <Link to={`/subject/${subject.name}`} key={subject.name}>
                     <li>
-                      <span
-                        onClick={() => this.props.fetchArticles(subject.name)}
-                      >
-                        {subject.name}
-                      </span>
+                      <span>{subject.name}</span>
                     </li>
                   </Link>
                 );
               })}
               <li>
-                <div className="navbar-login">LOGIN</div>
+                <Link to="/login">
+                  <div className="navbar-login">LOGIN</div>
+                </Link>
               </li>
             </ul>
           </div>

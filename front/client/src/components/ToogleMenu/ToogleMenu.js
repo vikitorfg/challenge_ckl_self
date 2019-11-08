@@ -3,13 +3,12 @@ import { Link, withRouter } from "react-router-dom";
 
 import "./ToogleMenu.css";
 import { connect } from "react-redux";
-import { fetchArticles } from "../../../actions";
-import { fetchSubjects } from "../../../actions";
-import { switchToogleMenu } from "../../../actions";
+import { fetchArticles } from "../../actions";
+import { fetchSubjects } from "../../actions";
+import { switchToogleMenu } from "../../actions";
 
 const ToogleMenu = props => {
-  const filterAndClose = subject => {
-    props.fetchArticles(subject);
+  const close = () => {
     props.switchToogleMenu();
   };
 
@@ -22,15 +21,17 @@ const ToogleMenu = props => {
               return (
                 <Link to={`/subject/${subject.name}`} key={subject.name}>
                   <li>
-                    <span onClick={() => filterAndClose(subject.name)}>
-                      {subject.name}
-                    </span>
+                    <span onClick={() => close()}>{subject.name}</span>
                   </li>
                 </Link>
               );
             })}
             <li>
-              <div className="tooglemenu-login">LOGIN</div>
+              <Link to="/login">
+                <div className="tooglemenu-login" onClick={() => close()}>
+                  LOGIN
+                </div>
+              </Link>
             </li>
           </ul>
         </div>

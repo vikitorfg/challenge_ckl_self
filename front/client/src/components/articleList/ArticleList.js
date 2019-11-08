@@ -9,24 +9,25 @@ import Cards from "../cards/Cards";
 
 class ArticleList extends Component {
   componentDidMount() {
+    this.subjectSelection();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.url !== prevProps.match.url) {
+      this.subjectSelection();
+    }
+  }
+
+  subjectSelection = () => {
     if (this.props.match.params.selectedSubject) {
       const selectedSubject = this.props.match.params.selectedSubject.toUpperCase();
       this.props.fetchArticles(selectedSubject);
     } else {
       this.props.fetchArticles();
     }
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.props.match.url !== nextProps.match.url ||
-      this.props.articles !== nextProps.articles
-    );
-  }
+  };
 
   render() {
-    console.log(this.props);
-
     if (!this.props.articles[0]) {
       return <Loader />;
     }
