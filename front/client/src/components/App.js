@@ -5,6 +5,7 @@ import ArticlesList from "./articleList/ArticleList";
 import Navbar from "./Navbar/Navbar";
 import ToogleMenu from "./ToogleMenu/ToogleMenu";
 import Login from "./Login/Login";
+import Interests from "./Interests/Interests";
 import "./App.css";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/" exact component={ArticlesList} />
           <Route path="/subject/:selectedSubject" component={ArticlesList} />
           <Route path="/login" exact component={Login} />
+          <Route path="/interests" exact component={Interests} />
         </div>
       </div>
     </BrowserRouter>
