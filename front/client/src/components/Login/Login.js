@@ -1,21 +1,36 @@
 import React, { Component } from "react";
 import GoogleAuth from "./GoogleAuth";
+import { connect } from "react-redux";
 import "./Login.css";
 
 class Login extends Component {
   render() {
+    let show = {};
+
+    if (this.props.googleIsSignedIn === true) {
+      show = { display: "none" };
+    } else {
+      show = {};
+    }
+
     return (
       <div className="main">
-        <span>USER AREA</span>
-        <div className="username">
-          <span>USERNAME</span>
-          <br />
-          <input type="text"></input>
-        </div>
-        <div className="password">
-          <span>PASSWORD</span>
-          <br />
-          <input type="password"></input>
+        <div className="form" style={show}>
+          <span className="title">USER AREA</span>
+          <div className="info-input">
+            <span>USERNAME</span>
+            <br />
+            <input className="input-box" type="text"></input>
+          </div>
+          <div className="info-input">
+            <span>PASSWORD</span>
+            <br />
+            <input className="input-box" type="password"></input>
+          </div>
+          <button className="btn-submit">LOGIN</button>
+          <div className="divisor">
+            <span>OR</span>
+          </div>
         </div>
         <GoogleAuth />
       </div>
@@ -23,4 +38,14 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    googleIsSignedIn: state.googleOauthReducer.isSignedIn,
+    googleUserId: state.googleOauthReducer.userId
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Login);

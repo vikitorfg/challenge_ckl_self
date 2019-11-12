@@ -1,8 +1,68 @@
 .main {
-  margin-top: 55px;
+  margin-top: 113px;
   display: flex;
   align-content: center;
   align-items: center;
   flex-direction: column;
-  justify-content: space-around;
+}
+
+.form {
+  width: 30.3%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 24px;
+  font-family: "Lato", sans-serif;
+  color: #3e433e;
+  margin-bottom: 63px;
+}
+
+.info-input {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  color: #3e433e;
+  width: 100%;
+  margin-top: 22px;
+}
+
+.input-box {
+  width: 100%;
+  height: 7vw;
+  max-height: 40px;
+  margin-top: 10px;
+}
+
+.btn-submit {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #4990e2;
+  border: 0;
+  cursor: pointer;
+  width: 100%;
+  padding: auto;
+  height: 7vw;
+  max-height: 52px;
+  margin-top: 22px;
+}
+
+.divisor {
+  margin: 10px 0;
+}
+
+.btn-google {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #d82323;
+  border: 0;
+  cursor: pointer;
+  width: 30.3%;
+  padding: auto;
+  height: 7vw;
+  max-height: 52px;
 }

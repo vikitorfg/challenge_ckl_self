@@ -5,14 +5,34 @@ import "./Navbar.css";
 import logo from "../../static/logo.png";
 import menu from "../../static/menu.png";
 import { connect } from "react-redux";
-import { fetchArticles } from "../../actions";
-import { fetchSubjects } from "../../actions";
-import { switchToogleMenu } from "../../actions";
+import {
+  fetchArticles,
+  fetchSubjects,
+  switchToogleMenu,
+  signOut
+} from "../../actions";
 
 export class Navbar extends Component {
   componentDidMount() {
     this.props.fetchSubjects();
   }
+
+  renderLoginButton() {
+    if (this.props.googleIsSignedIn === true) {
+      return (
+        <div className="navbar-login">
+          <Link to="/login">LOGOUT</Link>
+        </div>
+      );
+    } else {
+      return (
+        <Link to="/login">
+          <div className="navbar-login">LOGIN</div>
+        </Link>
+      );
+    }
+  }
+
   render() {
     return (
       <header className="navbar">
@@ -38,11 +58,7 @@ export class Navbar extends Component {
                   </Link>
                 );
               })}
-              <li>
-                <Link to="/login">
-                  <div className="navbar-login">LOGIN</div>
-                </Link>
-              </li>
+              <li>{this.renderLoginButton()}</li>
             </ul>
           </div>
         </nav>
@@ -52,12 +68,16 @@ export class Navbar extends Component {
 }
 
 const mapStateToProps = state => {
-  return { subjects: state.subjectsReducer, articles: state.articlesReducer };
+  return {
+    subjects: state.subjectsReducer,
+    articles: state.articlesReducer,
+    googleIsSignedIn: state.googleOauthReducer.isSignedIn
+  };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchSubjects, fetchArticles, switchToogleMenu }
+    { fetchSubjects, fetchArticles, switchToogleMenu, signOut }
   )(Navbar)
 );
