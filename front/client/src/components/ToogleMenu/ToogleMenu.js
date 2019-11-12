@@ -1,9 +1,8 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-
 import "./ToogleMenu.css";
 import { connect } from "react-redux";
-import { fetchArticles, fetchSubjects, switchToogleMenu } from "../../actions";
+import { fetchSubjects, switchToogleMenu } from "../../actions";
 
 const ToogleMenu = props => {
   const close = () => {
@@ -65,6 +64,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchSubjects, fetchArticles, switchToogleMenu }
+    { fetchSubjects, switchToogleMenu }
   )(ToogleMenu)
 );

@@ -1,0 +1,18 @@
+.main {
+  padding: 0 15% 0 15%;
+}
+
+.save {
+  max-width: 242px;
+}
+
+.info-save {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: #4a90e2;
+  margin-top: 22px;
+}
+
+.subjects {
+  display: flex;
+}

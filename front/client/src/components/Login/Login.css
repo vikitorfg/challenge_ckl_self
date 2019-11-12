@@ -4,10 +4,11 @@
   align-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 0 34.85% 0 34.85%;
 }
 
 .form {
-  width: 30.3%;
+  width: 100%;
   display: flex;
   align-content: center;
   align-items: center;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./interests.css";
 
 class Interests extends Component {
@@ -10,10 +11,10 @@ class Interests extends Component {
           WELCOME, <span className="username">USERNAME</span>
         </div>
         <div className="subjects">
-          <span>MY INTERESTS</span>
+          <span className="info-input">MY INTERESTS</span>
         </div>
-        <div className="">SAVE</div>
-        <div>
+        <button className="btn-submit save">SAVE</button>
+        <div className="info-save">
           <span>BACK TO HOME</span>
         </div>
       </div>
