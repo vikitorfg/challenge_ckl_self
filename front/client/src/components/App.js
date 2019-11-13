@@ -6,7 +6,6 @@ import Navbar from "./Navbar/Navbar";
 import ToogleMenu from "./ToogleMenu/ToogleMenu";
 import Login from "./Login/Login";
 import Interests from "./Interests/Interests";
-import Test from "./Test/Test";
 import "./App.css";
 
 const App = () => {
@@ -22,7 +21,6 @@ const App = () => {
           <Route path="/subject/:selectedSubject" component={ArticlesList} />
           <Route path="/login" exact component={Login} />
           <Route path="/interests" exact component={Interests} />
-          <Route path="/test" exact component={Test} />
         </div>
       </div>
     </BrowserRouter>
