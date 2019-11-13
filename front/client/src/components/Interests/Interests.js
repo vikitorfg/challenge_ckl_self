@@ -47,7 +47,7 @@ class Interests extends Component {
     } else {
       // inherits much css from Login.css, should refactor that
       return (
-        <div className="main">
+        <div className="interests">
           <div className="title">
             WELCOME, <span className="username">USERNAME</span>
           </div>

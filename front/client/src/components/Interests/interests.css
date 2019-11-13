@@ -1,4 +1,9 @@
-.main {
+.interests {
+  margin-top: 113px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 0 15% 0 15%;
 }
 
@@ -40,7 +45,7 @@
 }
 
 @media (max-width: 750px) {
-  .main {
+  .interests {
     margin-top: 76px;
     padding: 0 0 0 0;
     min-width: 320px;
