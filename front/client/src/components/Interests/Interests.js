@@ -5,6 +5,23 @@ import Radium, { Style } from "radium";
 import "./interests.css";
 
 class Interests extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      interests: []
+    };
+  }
+
+  componentDidMount() {
+    const interests = ["TECH", "POLITICS"];
+    this.fetchInterests(interests);
+  }
+
+  fetchInterests(interests) {
+    this.setState({ interests });
+  }
+
   convertArrayToObject(array, key) {
     const initialValue = {};
     return array.reduce((obj, item) => {
@@ -42,6 +59,7 @@ class Interests extends Component {
   }
 
   render() {
+    console.log(this.state);
     if (this.props.googleIsSignedIn === false) {
       return <div className="main">REDIRECT</div>;
     } else {
