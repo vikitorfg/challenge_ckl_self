@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GoogleAuth from "./GoogleAuth";
+import GoogleLoginBtn from "../GoogleLoginBtn/GoogleLoginBtn";
 import { connect } from "react-redux";
 import "./Login.css";
 
@@ -32,7 +32,7 @@ class Login extends Component {
             <span>OR</span>
           </div>
         </div>
-        <GoogleAuth />
+        <GoogleLoginBtn />
       </div>
     );
   }
