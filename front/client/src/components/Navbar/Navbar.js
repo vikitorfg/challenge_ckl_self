@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import "./Navbar.css";
 import logo from "../../static/logo.png";
 import menu from "../../static/menu.png";
-import { connect } from "react-redux";
+import LoginLogic from "../LoginLogic/LoginLogic";
 import {
   fetchArticles,
   fetchSubjects,
@@ -21,13 +22,15 @@ export class Navbar extends Component {
     if (this.props.googleIsSignedIn === true) {
       return (
         <div className="navbar-login">
-          <Link to="/login">LOGOUT</Link>
+          <LoginLogic />
         </div>
       );
     } else {
       return (
         <Link to="/login">
-          <div className="navbar-login">LOGIN</div>
+          <div className="navbar-login">
+            <LoginLogic signInText="LOGIN" />
+          </div>
         </Link>
       );
     }
