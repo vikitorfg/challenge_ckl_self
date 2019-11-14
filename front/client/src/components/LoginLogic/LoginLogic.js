@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { signIn, signOut } from "../../actions";
+import { Link, withRouter } from "react-router-dom";
 
 class LoginLogic extends React.Component {
   componentDidMount() {
@@ -38,11 +39,19 @@ class LoginLogic extends React.Component {
 
   renderAuthButton() {
     if (this.props.googleIsSignedIn === true) {
-      return <div onClick={this.onSignOutClick}>LOGOUT</div>;
+      return (
+        <div className={this.props.classes} onClick={this.onSignOutClick}>
+          LOGOUT
+        </div>
+      );
     } else if (this.props.googleLoginButton) {
       return <div onClick={this.onSignInClick}>{this.props.signInText}</div>;
     } else {
-      return <div>{this.props.signInText}</div>;
+      return (
+        <Link to="/login">
+          <div className={this.props.classes}>LOGIN</div>
+        </Link>
+      );
     }
   }
 
@@ -58,7 +67,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { signIn, signOut }
-)(LoginLogic);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { signIn, signOut }
+  )(LoginLogic)
+);

@@ -6,34 +6,11 @@ import "./Navbar.css";
 import logo from "../../static/logo.png";
 import menu from "../../static/menu.png";
 import LoginLogic from "../LoginLogic/LoginLogic";
-import {
-  fetchArticles,
-  fetchSubjects,
-  switchToogleMenu,
-  signOut
-} from "../../actions";
+import { fetchSubjects, switchToogleMenu } from "../../actions";
 
 export class Navbar extends Component {
   componentDidMount() {
     this.props.fetchSubjects();
-  }
-
-  renderLoginButton() {
-    if (this.props.googleIsSignedIn === true) {
-      return (
-        <div className="navbar-login">
-          <LoginLogic />
-        </div>
-      );
-    } else {
-      return (
-        <Link to="/login">
-          <div className="navbar-login">
-            <LoginLogic signInText="LOGIN" />
-          </div>
-        </Link>
-      );
-    }
   }
 
   render() {
@@ -61,7 +38,9 @@ export class Navbar extends Component {
                   </Link>
                 );
               })}
-              <li>{this.renderLoginButton()}</li>
+              <li>
+                <LoginLogic classes="navbar-login" />
+              </li>
             </ul>
           </div>
         </nav>
@@ -72,15 +51,13 @@ export class Navbar extends Component {
 
 const mapStateToProps = state => {
   return {
-    subjects: state.subjectsReducer,
-    articles: state.articlesReducer,
-    googleIsSignedIn: state.googleOauthReducer.isSignedIn
+    subjects: state.subjectsReducer
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchSubjects, fetchArticles, switchToogleMenu, signOut }
+    { fetchSubjects, switchToogleMenu }
   )(Navbar)
 );

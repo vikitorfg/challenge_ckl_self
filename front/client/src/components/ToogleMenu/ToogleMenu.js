@@ -2,31 +2,12 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./ToogleMenu.css";
 import { connect } from "react-redux";
-import { fetchSubjects, switchToogleMenu } from "../../actions";
+import { switchToogleMenu } from "../../actions";
+import LoginLogic from "../LoginLogic/LoginLogic";
 
 const ToogleMenu = props => {
   const close = () => {
     props.switchToogleMenu();
-  };
-
-  const renderLoginButton = () => {
-    if (props.googleIsSignedIn === true) {
-      return (
-        <div className="tooglemenu-login">
-          <Link to="/login" onClick={() => close()}>
-            LOGOUT
-          </Link>
-        </div>
-      );
-    } else {
-      return (
-        <Link to="/login">
-          <div className="tooglemenu-login" onClick={() => close()}>
-            LOGIN
-          </div>
-        </Link>
-      );
-    }
   };
 
   if (props.toogleMenuStatus) {
@@ -43,7 +24,9 @@ const ToogleMenu = props => {
                 </Link>
               );
             })}
-            <li>{renderLoginButton()}</li>
+            <li onClick={() => close()}>
+              <LoginLogic classes="tooglemenu-login" />
+            </li>
           </ul>
         </div>
       </div>
@@ -56,14 +39,13 @@ const ToogleMenu = props => {
 const mapStateToProps = state => {
   return {
     subjects: state.subjectsReducer,
-    toogleMenuStatus: state.switchToogleMenuReducer,
-    googleIsSignedIn: state.googleOauthReducer.isSignedIn
+    toogleMenuStatus: state.switchToogleMenuReducer
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchSubjects, switchToogleMenu }
+    { switchToogleMenu }
   )(ToogleMenu)
 );
