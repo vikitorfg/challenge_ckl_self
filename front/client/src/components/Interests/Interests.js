@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchSubjects } from "../../actions";
-import Radium, { Style } from "radium";
+import Radium from "radium";
 import { Redirect } from "react-router-dom";
 import "./interests.css";
 
@@ -17,6 +17,19 @@ class Interests extends Component {
 
   fetchInterests(interests) {
     this.setState({ interests });
+  }
+
+  selectInterest(interest) {
+    if (this.state.interests.includes(interest)) {
+      const newInterest = this.state.interests.filter(
+        arrayItem => arrayItem !== interest
+      );
+      this.setState({ interests: newInterest });
+    } else {
+      this.setState(prevState => ({
+        interests: [...prevState.interests, interest]
+      }));
+    }
   }
 
   convertArrayToObject(array, key) {
@@ -48,6 +61,9 @@ class Interests extends Component {
           key={subject.name}
           className="choice"
           style={[style[subject.name]]}
+          onClick={() => {
+            this.selectInterest(subject.name);
+          }}
         >
           <span>{subject.name}</span>
         </div>
@@ -56,7 +72,6 @@ class Interests extends Component {
   }
 
   render() {
-    console.log(this.state);
     if (this.props.googleIsSignedIn === false) {
       return <Redirect to="/login" />;
     } else {
