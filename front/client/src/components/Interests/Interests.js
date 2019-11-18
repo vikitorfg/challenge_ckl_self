@@ -32,6 +32,10 @@ class Interests extends Component {
     }
   }
 
+  onSave(interests) {
+    console.log(interests);
+  }
+
   convertArrayToObject(array, key) {
     const initialValue = {};
     return array.reduce((obj, item) => {
@@ -47,9 +51,18 @@ class Interests extends Component {
     if (this.props.subjects[0]) {
       style = this.props.subjects.map(subject => {
         delete subject.id;
+
+        if (this.state.interests.includes(subject.name)) {
+          return {
+            name: subject.name,
+            color: "white",
+            backgroundColor: subject.color
+          };
+        }
+
         return {
           ...subject,
-          ":hover": { backgroundColor: subject.color, color: "white" }
+          backgroundColor: "white"
         };
       });
       style = this.convertArrayToObject(style, "name");
@@ -59,7 +72,7 @@ class Interests extends Component {
       return (
         <div
           key={subject.name}
-          className="choice"
+          className="interest"
           style={[style[subject.name]]}
           onClick={() => {
             this.selectInterest(subject.name);
@@ -87,7 +100,12 @@ class Interests extends Component {
             </div>
             <div className="subjects-choice">{this.renderSubjectList()}</div>
           </div>
-          <button className="btn-submit save">SAVE</button>
+          <button
+            className="btn-submit save"
+            onClick={() => this.onSave(this.state.interests)}
+          >
+            SAVE
+          </button>
           <div className="info-save">
             <span>BACK TO HOME</span>
           </div>
