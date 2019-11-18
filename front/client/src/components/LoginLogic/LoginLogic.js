@@ -30,7 +30,11 @@ class LoginLogic extends React.Component {
   };
 
   onSignInClick = () => {
-    this.auth.signIn();
+    this.auth.signIn().then(() => {
+      if (this.auth.isSignedIn) {
+        this.props.history.push("/");
+      }
+    });
   };
 
   onSignOutClick = () => {
@@ -68,8 +72,5 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    { signIn, signOut }
-  )(LoginLogic)
+  connect(mapStateToProps, { signIn, signOut })(LoginLogic)
 );

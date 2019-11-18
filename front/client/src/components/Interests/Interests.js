@@ -5,13 +5,9 @@ import Radium, { Style } from "radium";
 import "./interests.css";
 
 class Interests extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      interests: []
-    };
-  }
+  state = {
+    interests: []
+  };
 
   componentDidMount() {
     const interests = ["TECH", "POLITICS"];
@@ -94,7 +90,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { fetchSubjects }
-)(Interests);
+export default connect(mapStateToProps, { fetchSubjects })(Interests);
