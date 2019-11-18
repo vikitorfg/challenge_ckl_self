@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchSubjects } from "../../actions";
 import Radium, { Style } from "radium";
+import { Redirect } from "react-router-dom";
 import "./interests.css";
 
 class Interests extends Component {
@@ -57,7 +58,7 @@ class Interests extends Component {
   render() {
     console.log(this.state);
     if (this.props.googleIsSignedIn === false) {
-      return <div className="main">REDIRECT</div>;
+      return <Redirect to="/login" />;
     } else {
       // inherits much css from Login.css, should refactor that
       return (
