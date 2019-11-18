@@ -1,0 +1,6 @@
+venv/
+docker/
+sensitive_info.txt
+.env
+
+__pycache__/
