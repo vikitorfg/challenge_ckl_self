@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import backend from "../../apis/backend";
 import { connect } from "react-redux";
-import { fetchSubjects } from "../../actions";
 import Radium from "radium";
 import { Redirect } from "react-router-dom";
 import "./interests.css";
@@ -10,12 +10,23 @@ class Interests extends Component {
     interests: []
   };
 
-  componentDidMount() {
-    const interests = ["TECH", "POLITICS"];
-    this.fetchInterests(interests);
-  }
+  async componentDidMount() {
+    const response = await backend
+      .get(`interests/`, {
+        userId: this.props.userId
+      })
+      .then(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
 
-  fetchInterests(interests) {
+    console.log(response);
+
+    const interests = ["TECH", "POLITICS"];
     this.setState({ interests });
   }
 
@@ -32,8 +43,28 @@ class Interests extends Component {
     }
   }
 
-  onSave(interests) {
-    console.log(interests);
+  async onSave() {
+    if (!this.props.userId) {
+      return console.log("no user detected");
+    }
+    // console.log(this.state.interests);
+    // const interests = this.state.interests.map(interest => {
+
+    // })
+
+    const response = await backend
+      .post(`interests/`, {
+        userId: this.props.userId,
+        interests: [1, 2, 3]
+      })
+      .then(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   convertArrayToObject(array, key) {
@@ -100,10 +131,7 @@ class Interests extends Component {
             </div>
             <div className="subjects-choice">{this.renderSubjectList()}</div>
           </div>
-          <button
-            className="btn-submit save"
-            onClick={() => this.onSave(this.state.interests)}
-          >
+          <button className="btn-submit save" onClick={() => this.onSave()}>
             SAVE
           </button>
           <div className="info-save">
@@ -120,8 +148,9 @@ Interests = Radium(Interests);
 const mapStateToProps = state => {
   return {
     subjects: state.subjectsReducer,
-    googleIsSignedIn: state.googleOauthReducer.isSignedIn
+    googleIsSignedIn: state.googleOauthReducer.isSignedIn,
+    userId: state.googleOauthReducer.userId
   };
 };
 
-export default connect(mapStateToProps, { fetchSubjects })(Interests);
+export default connect(mapStateToProps, {})(Interests);
